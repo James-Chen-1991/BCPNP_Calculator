@@ -1,0 +1,4 @@
+<app-header></app-header>
+<app-bcpnp-form (sumPoints)="getPoints($event)" *ngIf="points == -1"></app-bcpnp-form>
+<app-result-page [point] = "points" (refresh)="reFreshForm()" *ngIf="points > -1"></app-result-page>
+<app-footer></app-footer>

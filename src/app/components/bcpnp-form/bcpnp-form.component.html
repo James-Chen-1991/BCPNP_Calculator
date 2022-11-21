@@ -1,0 +1,67 @@
+<div class="container">
+  <legend>BC PNP Data</legend>
+  <form>
+    <app-select
+      [data]="jobTeer"
+      title="Job Teer"
+      (pointsEvent)="setPoint($event)"
+    ></app-select>
+    <div *ngIf="points.jobTeer === -1">
+      <h1>Sorry, your job teer is not supported by BCPNP.</h1>
+    </div>
+    <div *ngIf="points.jobTeer === -2">
+      <h1>Please select your job teer to continue.</h1>
+    </div>
+    <ng-container *ngIf="points.jobTeer > -1">
+      <app-select
+        [data]="jobExperience"
+        title="Directly Job Experience"
+        (pointsEvent)="setPoint($event)"
+      ></app-select>
+
+      <app-checkbox
+        *ngFor="let job of extraJob"
+        [data]="job"
+        (check)="setExtraPoints($event)"
+      ></app-checkbox>
+      <app-select
+      [data]="highestEducation"
+      title="Highest Level of Education"
+      (pointsEvent)="setPoint($event)">
+    </app-select>
+    <app-checkbox
+      *ngFor="let edu of extraEducation"
+      [data]="edu"
+      (check)="setExtraPoints($event)"
+    >
+    </app-checkbox>
+    <app-select
+      [data]="languageLevel"
+      title="Language"
+      (pointsEvent)="setPoint($event)"
+      ></app-select>
+    <app-checkbox
+      [data]="extraLanguage"
+      (check)="setExtraPoints($event)"
+      ></app-checkbox>
+    <app-select
+      [data]="hourlyWage"
+      title="Wage of the B.C. Job Offer"
+      (pointsEvent)="setPoint($event)">
+    </app-select>
+    <app-select
+      [data]="workingArea"
+      title="Area of Employment within B.C."
+      (pointsEvent)="setPoint($event)"
+    ></app-select>
+    <app-checkbox
+      *ngFor="let work of workingAreaExtra"
+      [data]="work"
+      (check)="setExtraPoints($event)"
+      >
+    </app-checkbox>
+    <button (click)="submit()">Submit and See the Result</button>
+    </ng-container>
+
+  </form>
+</div>

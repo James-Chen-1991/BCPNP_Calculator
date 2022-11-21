@@ -1,0 +1,11 @@
+<div class="column">
+  <label for="dataSelection">{{ title }}</label
+  ><br />
+  <select [(ngModel)]="point" (ngModelChange)="select()" name="dataSelection">
+    <ng-container *ngFor="let d of data; let i = index">
+      <option [ngValue]="d.point" [attr.selected]="i === 0">
+        {{ d.name }}
+      </option>
+    </ng-container>
+  </select>
+</div>
